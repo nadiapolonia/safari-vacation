@@ -11,21 +11,29 @@ namespace safari_vacation
             //Equivalent to INSERT INTO...
             var db = new SafariContext();
 
-            var hippo = new SeenAnimals
+            var lion = new SeenAnimals
             {
-                Species = "Hippo",
-                CountOfTimesSeen = 2,
-                LocationOfLastSeen = "Jungle",
+                Species = "Lion",
+                CountOfTimesSeen = 4,
+                LocationOfLastSeen = "Desert",
             };
-            db.Animal.Add(hippo);
+            db.Animal.Add(lion);
 
-            var camel = new SeenAnimals
+            var tiger = new SeenAnimals
             {
-                Species = "Camel",
-                CountOfTimesSeen = 3,
-                LocationOfLastSeen = "Desert"
+                Species = "Tiger",
+                CountOfTimesSeen = 2,
+                LocationOfLastSeen = "Jungle"
             };
-            db.Animal.Add(camel);
+            db.Animal.Add(tiger);
+
+            var bear = new SeenAnimals
+            {
+                Species = "Bear",
+                CountOfTimesSeen = 1,
+                LocationOfLastSeen = "Jungle"
+            };
+            db.Animal.Add(bear);
 
 
             db.SaveChanges();
@@ -34,7 +42,7 @@ namespace safari_vacation
         static void ReadData()
         {
             var db = new SafariContext();
-            var countAnimoo = db.Animal.Sum(animooo => animooo.CountOfTimesSeen);
+            var countAnimoo = db.Animal.Sum(animoo => animoo.CountOfTimesSeen).Where(animoo => animoo.Species == "Lion" || animoo.Species == "Tiger" || animoo.Species == "Bear");
             Console.WriteLine(countAnimoo);
 
         }
@@ -59,7 +67,6 @@ namespace safari_vacation
 
         static void Main(string[] args)
         {
-            ReadData();
             Console.WriteLine("Hello World!");
         }
     }
