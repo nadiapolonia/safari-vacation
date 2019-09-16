@@ -34,7 +34,7 @@ namespace safari_vacation
         static void ReadData()
         {
             var db = new SafariContext();
-            var countAnimoo = db.Animal.Sum(animoo => animoo.CountOfTimesSeen);
+            var countAnimoo = db.Animal.Sum(animooo => animooo.CountOfTimesSeen);
             Console.WriteLine(countAnimoo);
 
         }
