@@ -42,7 +42,7 @@ namespace safari_vacation
         static void ReadData()
         {
             var db = new SafariContext();
-            var countAnimoo = db.Animal.Sum(animoo => animoo.CountOfTimesSeen).Where(animoo => animoo.Species == "Lion" || animoo.Species == "Tiger" || animoo.Species == "Bear");
+            var countAnimoo = db.Animal.Where(animoo => animoo.Species == "Lion" || animoo.Species == "Tiger" || animoo.Species == "Bear").Sum(animoo => animoo.CountOfTimesSeen);
             Console.WriteLine(countAnimoo);
 
         }
